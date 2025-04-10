@@ -26,6 +26,8 @@ rand.workspace = true
 tracing-profile.workspace = true
 tracing.workspace = true
 criterion.workspace = true
+jemalloc-ctl = "0.5.4"
+jemallocator = "0.5.4"
 
 [[example]]
 name = "keccakf_circuit"
@@ -104,8 +106,10 @@ nightly_features = [
     "binius_macros/nightly_features",
 ]
 
-
 [[bench]]
 name = "sha256_bench"
 harness = false
 
+[[bin]]
+name = "measure"
+path = "src/bin/measure.rs"

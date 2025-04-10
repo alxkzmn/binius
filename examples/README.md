@@ -1,3 +1,15 @@
+# Run SHA256 benches
+
+```bash
+cargo bench
+```
+
+# Measure SHA256 RAM footprint and preprocessing size
+
+```bash
+cargo run --bin measure --release
+```
+
 # Performance numbers of SNARKS
 
 All performance numbers were collected from GCP's `c3-standard-44` machines, which has 22 cores of Intel Sapphire Rapids
@@ -7,15 +19,15 @@ witness trace generation as well. For all the keccakf functions, the hashed data
 bytes) per permutation
 
 | SNARKS                           | Project        | Number of Permutations | Proving time (s) | Verification time (ms) | Hashed Data (MB) | MB / Proving time(s) |
-|----------------------------------|----------------|------------------------|------------------|------------------------|------------------|----------------------|
+| -------------------------------- | -------------- | ---------------------- | ---------------- | ---------------------- | ---------------- | -------------------- |
 | Keccakf                          | Binius         | 2^13                   | 3.91             | 206                    | 1.1              | 0.281                |
 | Keccakf (SHA256 Merkle trees)    | Plonky3 / BB31 | 2^13                   | 4.19             | 216                    | 1.1              | 0.262                |
 | Keccakf (Poseidon2 Merkle trees) | Plonky3 / BB31 | 2^13                   | 5.38             | 260                    | 1.1              | 0.204                |
-| Groestl (*)                      | Binius         | 2^14                   | 1.45             | 116                    | 1.049            | 0.721                |
+| Groestl (\*)                     | Binius         | 2^14                   | 1.45             | 116                    | 1.049            | 0.721                |
 | Vision32b                        | Binius         | 2^14                   | 4.63             | 162                    | 1.049            | 0.226                |
 | SHA-256                          | Binius         | 2^14                   | 4.51             | 40                     | 1.049            | 0.232                |
 
-(*) Our Current Groestl SNARK only has the P permutation as opposed to the compression function which has both P and Q
+(\*) Our Current Groestl SNARK only has the P permutation as opposed to the compression function which has both P and Q
 permutations, the number of permutations for groestl in the table assumes that both P and Q permutations would take the
 same amount of proving and verification time.
 
@@ -129,7 +141,7 @@ constraint_system::verify [ 116.39ms | 100.00% ]
 
 ### Vision
 
-``` 
+```
 Verifying 16384 Vision-32b permutations
 generating trace [ 599.12ms | 100.00% ]
 
