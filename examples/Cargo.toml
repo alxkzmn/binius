@@ -25,6 +25,7 @@ itertools.workspace = true
 rand.workspace = true
 tracing-profile.workspace = true
 tracing.workspace = true
+criterion.workspace = true
 
 [[example]]
 name = "keccakf_circuit"
@@ -102,3 +103,9 @@ nightly_features = [
     "binius_hal/nightly_features",
     "binius_macros/nightly_features",
 ]
+
+
+[[bench]]
+name = "sha256_bench"
+harness = false
+
